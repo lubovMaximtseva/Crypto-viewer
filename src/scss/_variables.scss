@@ -1,0 +1,19 @@
+$blue: #1288e8;
+$grey: #616a8b;
+$white: #ffffff;
+$navy-blue: linear-gradient(180deg, #bcd3f5 100%, #3887fe 100%, #5fb2ff 100%);
+$red: linear-gradient(180deg, #f7bc7a 100%, #ed6480 100%);
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+$font-mamily-base: "Open Sans", sans-serif;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+$grid-sm: 576px;
+$grid-md: 768px;
+$grid-lg: 992px;
+$grid-xl: 1200px;
