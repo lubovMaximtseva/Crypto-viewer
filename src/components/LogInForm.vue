@@ -28,7 +28,9 @@
       ></v-text-field>
     </div>
     <div class="formButtons">
-      <v-btn color="info" dark>SIGN UP </v-btn>
+      <v-btn color="info" dark @click="$router.push({ path: '/main' })"
+        >SIGN UP
+      </v-btn>
       <v-btn color="info" dark>SIGN IN </v-btn>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div class="appMain">
+    <div class="appMain" v-if="isMainPage">
       <div class="container">
         <div class="login">
           <Login />
@@ -12,6 +12,7 @@
         </div>
       </div>
     </div>
+    <router-view> </router-view>
   </v-app>
 </template>
 -
@@ -27,6 +28,11 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    isMainPage() {
+      return this.$route.path !== "/main";
+    },
+  },
 };
 </script>
 
