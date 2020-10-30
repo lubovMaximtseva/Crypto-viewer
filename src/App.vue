@@ -1,17 +1,18 @@
 <template>
   <v-app>
-    <div class="appMain">
+    <div class="appMain" v-if="isMainPage">
       <div class="container">
         <div class="login">
           <Login />
         </div>
         <div class="greeting">
-          <div class="greetingTitle">VALUET</div>
-          <div class="divider"></div>
-          <div class="greetingText">Your currency dashboard</div>
+          <div class="greeting__title">VALUET</div>
+          <div class="greeting__divider"></div>
+          <div class="greeting__text">Your currency dashboard</div>
         </div>
       </div>
     </div>
+    <router-view> </router-view>
   </v-app>
 </template>
 -
@@ -27,6 +28,11 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    isMainPage() {
+      return this.$route.path !== "/main";
+    },
+  },
 };
 </script>
 
@@ -84,7 +90,7 @@ export default {
     padding-bottom: 50px;
   }
 
-  .greetingTitle {
+  &__title {
     font-weight: $font-weight-extra-bold;
     color: transparent;
     -webkit-background-clip: text;
@@ -108,13 +114,13 @@ export default {
     }
   }
 
-  .divider {
+  &__divider {
     height: 1px;
     background: $blue;
     width: 275px;
   }
 
-  .greetingText {
+  &__text {
     font-family: Roboto;
     font-style: normal;
     font-weight: $font-weight-light;
