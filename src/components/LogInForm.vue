@@ -68,7 +68,7 @@ export default {
   justify-content: space-around;
   align-items: center;
 
-  .form__title {
+  &__title {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -78,17 +78,17 @@ export default {
     text-shadow: 0px 4px 20px rgba(1, 143, 255, 0.15);
   }
 
-  .form__inputs {
+  &__inputs {
     margin: 0 30px;
   }
 
-  .form__buttons {
+  &__buttons {
     width: 80%;
     display: flex;
     justify-content: space-around;
   }
 
-  .form__resetPassword {
+  &__resetPassword {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;

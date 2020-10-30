@@ -90,7 +90,7 @@ export default {
     padding-bottom: 50px;
   }
 
-  .greeting__title {
+  &__title {
     font-weight: $font-weight-extra-bold;
     color: transparent;
     -webkit-background-clip: text;
@@ -114,13 +114,13 @@ export default {
     }
   }
 
-  .greeting__divider {
+  &__divider {
     height: 1px;
     background: $blue;
     width: 275px;
   }
 
-  .greeting__text {
+  &__text {
     font-family: Roboto;
     font-style: normal;
     font-weight: $font-weight-light;
