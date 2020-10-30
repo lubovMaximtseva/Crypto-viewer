@@ -6,9 +6,9 @@
           <Login />
         </div>
         <div class="greeting">
-          <div class="greetingTitle">VALUET</div>
-          <div class="divider"></div>
-          <div class="greetingText">Your currency dashboard</div>
+          <div class="greeting__title">VALUET</div>
+          <div class="greeting__divider"></div>
+          <div class="greeting__text">Your currency dashboard</div>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ export default {
     padding-bottom: 50px;
   }
 
-  .greetingTitle {
+  .greeting__title {
     font-weight: $font-weight-extra-bold;
     color: transparent;
     -webkit-background-clip: text;
@@ -114,13 +114,13 @@ export default {
     }
   }
 
-  .divider {
+  .greeting__divider {
     height: 1px;
     background: $blue;
     width: 275px;
   }
 
-  .greetingText {
+  .greeting__text {
     font-family: Roboto;
     font-style: normal;
     font-weight: $font-weight-light;

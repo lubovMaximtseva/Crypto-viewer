@@ -1,7 +1,7 @@
 <template>
   <div class="form">
-    <div class="formTitle">Welcome!</div>
-    <div class="formInputs">
+    <div class="form__title">Welcome!</div>
+    <div class="form__inputs">
       <v-text-field
         label="E-mail or Login"
         filled
@@ -27,14 +27,14 @@
         background-color="#2E3558"
       ></v-text-field>
     </div>
-    <div class="formButtons">
+    <div class="form__buttons">
       <v-btn color="info" dark @click="$router.push({ path: '/main' })"
         >SIGN UP
       </v-btn>
       <v-btn color="info" dark>SIGN IN </v-btn>
     </div>
 
-    <div class="formResetPassword">Forgot your password?</div>
+    <div class="form__resetPassword">Forgot your password?</div>
   </div>
 </template>
 
@@ -67,39 +67,35 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
 
-.formTitle {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
+  .form__title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+    color: #ffffff;
+    text-shadow: 0px 4px 20px rgba(1, 143, 255, 0.15);
+  }
 
-  color: #ffffff;
+  .form__inputs {
+    margin: 0 30px;
+  }
 
-  text-shadow: 0px 4px 20px rgba(1, 143, 255, 0.15);
-}
+  .form__buttons {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+  }
 
-.formInputs {
-  margin: 0 30px;
-}
-
-.formButtons {
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.formResetPassword {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-
-  text-decoration-line: underline;
-
-  color: #5fb2ff;
+  .form__resetPassword {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #5fb2ff;
+  }
 }
 </style>
