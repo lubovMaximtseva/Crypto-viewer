@@ -3,6 +3,7 @@
     <div class="form__title">Welcome!</div>
     <div class="form__inputs">
       <v-text-field
+        v-model="email"
         label="E-mail or Login"
         filled
         dark
@@ -14,6 +15,7 @@
         width="500"
       ></v-text-field>
       <v-text-field
+        v-model="password"
         label="Password"
         filled
         :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -28,26 +30,83 @@
       ></v-text-field>
     </div>
     <div class="form__buttons">
-      <v-btn color="info" dark @click="$router.push({ path: '/main' })"
-        >SIGN UP
-      </v-btn>
-      <v-btn color="info" dark>SIGN IN </v-btn>
+      <v-btn color="info" dark @click="signUp()">SIGN UP </v-btn>
+      <v-btn color="info" dark @click="signIn()">SIGN IN </v-btn>
     </div>
 
     <div class="form__resetPassword">Forgot your password?</div>
+    <v-snackbar v-model="snackbar" app>
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   name: "Login",
   data() {
     return {
+      email: "",
+      password: "",
       show: false,
       rules: {
         required: (value) => !!value || "Required.",
       },
+      snackbar: false,
+      text: "",
     };
+  },
+  methods: {
+    signUp() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.text = "Welcome";
+          this.snackbar = true;
+          this.$router.replace({ path: "/main" });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          if (errorCode === "auth/email-already-in-use") {
+            this.text =
+              "Account with the given email address is already exists ";
+            this.snackbar = true;
+          }
+          console.error(error);
+        });
+    },
+    signIn() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then((response) => {
+          console.log(response);
+          this.$router.replace({ path: "/main" });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          if (errorCode === "auth/user-not-found") {
+            this.text = "User not found";
+            this.snackbar = true;
+            return;
+          }
+          if (errorCode === "auth/wrong-password") {
+            this.text = "Wrong password";
+            this.snackbar = true;
+            return;
+          }
+
+          console.error(error);
+        });
+    },
   },
 };
 </script>
