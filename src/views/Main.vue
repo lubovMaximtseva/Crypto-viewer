@@ -14,69 +14,61 @@
           active-class="border"
           v-model="model"
         >
-          <v-list-item>
+          <v-list-item v-for="(item, index) in menuItem" :key="index">
             <v-list-item-icon>
               <v-icon color="primary">mdi-message-text</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Overview</v-list-item-title>
+              <v-list-item-title>{{ item }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+        </v-list-item-group>
+        <v-divider> </v-divider>
+        <v-list-item-group color="#616A8B" active-class="border">
           <v-list-item>
             <v-list-item-icon>
               <v-icon color="primary">mdi-message-text</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Wallets</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="primary">mdi-message-text</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Transictions</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="primary">mdi-message-text</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Exchange</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="primary">mdi-message-text</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Market</v-list-item-title>
+              <v-list-item-title>Log out</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
       </v-list>
+      <v-divider> </v-divider>
     </v-navigation-drawer>
 
-    <v-app-bar app elevate-on-scroll>
+    <v-app-bar app elevate-on-scroll class="app-bar">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Чат комнаты </v-toolbar-title>
+      <v-toolbar-title> </v-toolbar-title>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <div style="height: 100%"></div>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
       drawer: true,
       model: 1,
+      menuItem: ["Overview", "Wallets", "Transictions", "Exchange", "Market"],
     };
+  },
+  methods: {
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("/");
+        });
+    },
   },
 };
 </script>
@@ -126,5 +118,14 @@ export default {
     border-radius: 5px;
     border-bottom: 1px solid #1288e8;
   }
+}
+
+.app-bar {
+  background: radial-gradient(
+    63.88% 129.61% at 25.55% 31.91%,
+    #20135c 0%,
+    #140739 92.82%
+  );
+  border-bottom: 1px groove #2d317a;
 }
 </style>
